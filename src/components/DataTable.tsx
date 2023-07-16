@@ -31,6 +31,7 @@ interface DataTableProps {
   sorting?: boolean;
   pagination?: boolean;
   filter?: boolean;
+  searchbar?: boolean;
 }
 
 const DataTable: React.FC<DataTableProps> = ({
@@ -40,6 +41,7 @@ const DataTable: React.FC<DataTableProps> = ({
   sorting = false,
   pagination = false,
   filter = false,
+  searchbar = false
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSource, setSelectedSource] = useState("");
@@ -144,7 +146,7 @@ const DataTable: React.FC<DataTableProps> = ({
   return (
     <TableContainer className="table-container">
       <div className="filter-section">
-        <div className="search-bar">
+        {searchbar && <div className="search-bar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -166,7 +168,7 @@ const DataTable: React.FC<DataTableProps> = ({
             onChange={handleSearch}
             value={searchTerm}
           />
-        </div>
+        </div>}
         {filter && (
           <Select
             className="text-secondary select pointer"

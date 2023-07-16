@@ -31,6 +31,7 @@ export default function Home() {
   return (
     <DataTable
       sorting
+      searchbar
       pagination
       headers={headersObject}
       rows={bookingData}
